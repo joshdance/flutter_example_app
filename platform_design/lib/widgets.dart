@@ -5,6 +5,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 /// A simple widget that builds different things on different platforms.
 class PlatformWidget extends StatelessWidget {
@@ -21,7 +22,8 @@ class PlatformWidget extends StatelessWidget {
   Widget build(context) {
     assert(
         defaultTargetPlatform == TargetPlatform.android ||
-            defaultTargetPlatform == TargetPlatform.iOS,
+            defaultTargetPlatform == TargetPlatform.iOS || 
+            kIsWeb,  // Check for web platform
         'Unexpected platform $defaultTargetPlatform');
     return switch (defaultTargetPlatform) {
       TargetPlatform.android => androidBuilder(context),
